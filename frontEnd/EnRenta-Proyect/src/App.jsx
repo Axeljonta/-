@@ -1,9 +1,10 @@
 import { useState } from 'react'
+import Navbar from './components/Navbar/Navbar'
 
 function App() {
   return(
     <>
-      <h1>EnRenta</h1>
+      <Navbar />
     </>
   )
 }
