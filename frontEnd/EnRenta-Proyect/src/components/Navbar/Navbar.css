@@ -2,10 +2,103 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #a19c9cad;
-    padding: 10px;
+    align-items: center;
+    background: #00012c;
+    padding: 12px clamp(12px, 3vw, 32px);
     margin: 0;
     width: 100%;
-    z-index: 1;
+    min-height: 72px;
 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+
+/* ===== MENU HAMBURGUESA ===== */
+
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: clamp(10px, 2vw, 32px);
+}
+
+.menu-icon{
+    font-size: clamp(26px, 3vw, 44px);
+    color: #F5C21A;
+    cursor: pointer;
+    transition: color .3s ease;
+}
+
+.menu-icon:hover{
+    color: #ffffff;
+}
+
+
+/* ===== LOGO ===== */
+
+.navbar-logo{
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.navbar-logo img{
+    width: clamp(120px, 18vw, 220px);
+    display: block;
+}
+
+
+/* ===== LINKS ===== */
+
+.navbar-links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    gap: clamp(8px, 1.5vw, 15px);
+}
+
+.navbar-links li{
+    margin: 0;
+}
+
+.navbar-links li a{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(4px, 1vw, 8px);
+
+    color: #ffffff;
+    text-decoration: none;
+    font-size: clamp(13px, 1vw, 18px);
+    font-weight: 600;
+
+    padding: clamp(8px, 1.5vw, 14px) clamp(12px, 1vw, 16px);
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+
+/* ===== BOTON CREAR CUENTA ===== */
+
+.navbar-links li:first-child a{
+    background: #F5C21A;
+    color: #000000;
+}
+
+.navbar-links li:first-child a:hover{
+    background: #ac8404;
+    color: #000000;
+}
+
+
+/* ===== INICIAR SESION ===== */
+
+.navbar-links li:last-child a:hover{
+    color: #F5C21A;
 }
