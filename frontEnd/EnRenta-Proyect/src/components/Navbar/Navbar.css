@@ -4,16 +4,20 @@
     justify-content: space-between;
     align-items: center;
     background: #00012c;
-    padding: 12px clamp(12px, 3vw, 32px);
+    padding: 28px clamp(15px, 2vw, 65px);
     margin: 0;
     width: 100%;
-    min-height: 72px;
-
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 1000; 
+    border-bottom: #F5C21A clamp(6px, 0.5vw, 10px) solid;
 }
+
+@media (max-width: 480px) {}  
+@media (max-width: 768px)  {} 
+@media (max-width: 1024px) {}
+
 
 
 /* ===== MENU HAMBURGUESA ===== */
@@ -26,7 +30,7 @@
 }
 
 .menu-icon{
-    font-size: clamp(26px, 3vw, 44px);
+    font-size: clamp(26px, 3vw, 64px);
     color: #F5C21A;
     cursor: pointer;
     transition: color .3s ease;
@@ -36,6 +40,26 @@
     color: #ffffff;
 }
 
+@media screen and (min-width: 370px) and (max-width: 767px) {
+    .menu {
+        height: 28px;
+        object-fit: contain;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px)  {
+    .menu {
+        height: 42px;
+        object-fit: contain;
+    }
+} 
+
+@media screen and (min-width: 1024px)  {
+    .menu{
+        height: 49px;
+        object-fit: contain;
+    }
+} 
 
 /* ===== LOGO ===== */
 
@@ -46,9 +70,32 @@
 }
 
 .navbar-logo img{
-    width: clamp(120px, 18vw, 220px);
     display: block;
 }
+
+@media screen and (min-width: 370px) and (max-width: 767px) {
+    .navbar-logo img {
+        width: 90px;
+        height: 28px;
+        object-fit: contain;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px)  {
+    .navbar-logo img {
+        width: 140px;
+        height: 42px;
+        object-fit: contain;
+    }
+} 
+
+@media screen and (min-width: 1024px)  {
+    .navbar-logo img {
+        height: 49px;
+        width: 180px;
+        object-fit: contain;
+    }
+} 
 
 
 /* ===== LINKS ===== */
@@ -58,7 +105,8 @@
     flex-direction: row;
     align-items: center;
     list-style: none;
-    gap: clamp(8px, 1.5vw, 15px);
+    gap: clamp(6px, 1.5vw, 15px); 
+    margin-right: 2vw;
 }
 
 .navbar-links li{
@@ -70,18 +118,44 @@
     align-items: center;
     justify-content: center;
     gap: clamp(4px, 1vw, 8px);
-
     color: #ffffff;
     text-decoration: none;
-    font-size: clamp(13px, 1vw, 18px);
-    font-weight: 600;
-
-    padding: clamp(8px, 1.5vw, 14px) clamp(12px, 1vw, 16px);
+    font-weight: 500;
+    padding: clamp(8px, 1.5vw, 14px) clamp(8px, 1.5vw, 16px);
     border-radius: 10px;
-
     cursor: pointer;
     transition: .3s ease;
 }
+
+@media screen and (min-width: 370px) and (max-width: 767px) {
+    .navbar-links {
+        height: 28px;
+        object-fit: contain;
+    }
+    .navbar-links li a{
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px)  {
+    .navbar-links {
+        height: 42px;
+        object-fit: contain;
+    }
+    .navbar-links li a{
+        font-size: 15px;
+    }
+} 
+
+@media screen and (min-width: 1024px)  {
+    .navbar-links{
+        height: 49px;
+        object-fit: contain;
+    }
+    .navbar-links li a{
+        font-size: 22px;
+    }
+} 
 
 
 /* ===== BOTON CREAR CUENTA ===== */
@@ -101,4 +175,87 @@
 
 .navbar-links li:last-child a:hover{
     color: #F5C21A;
+}
+
+/* ===== MENU HAMBURGUESA ===== */
+
+.sidebar{
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    background: #00012c;
+    padding: 30px 20px;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform .3s ease, opacity .3s ease;
+    z-index: 999;
+    
+}
+ 
+/* media menu hamburguesa responsive  */
+@media screen and (min-width: 370px) and (max-width: 767px) {
+    .sidebar {
+        top: 75px;
+        height: calc(100vh - 84px);
+    }
+
+    .sidebar ul li a{
+    font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px)  {
+    .sidebar {
+        top:80px;
+        height: calc(100vh - 96px);
+        width: 35vw;
+    }
+
+    .sidebar ul li a{
+    font-size: 32px;
+    }
+} 
+
+@media screen and (min-width: 1024px)  {
+    .sidebar{
+        top: 90px;
+        width: 25vw;
+        height: calc(100vh - 105px);
+    }
+
+    .sidebar ul li a{
+    font-size: 40px;
+    }
+} 
+
+
+.sidebar.active{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.sidebar ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar ul li{
+    margin-bottom: clamp(10px, 2vw, 40px);
+    text-align: center;
+    padding: 5% 0px;
+    width: 85%;
+    border-bottom: #8d7010 clamp(1px, 0.5vw, 3px) solid;
+}
+
+.sidebar ul li:hover{
+    border-bottom: #F5C21A clamp(4px, 0.5vw, 8px) solid;
+}
+.sidebar ul li a{
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .3s;
 }
