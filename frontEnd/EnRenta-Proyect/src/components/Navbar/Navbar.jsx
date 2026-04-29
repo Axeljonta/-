@@ -7,6 +7,7 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 import { HiMenuAlt2 } from "react-icons/hi";
 // Importo useState para el menu responsive
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   
@@ -27,21 +28,21 @@ function Navbar() {
                 {/* Boton login y registro */}
                 <ul className="navbar-links">
                     <li>
-                        <a href="/"> <FaAngleDoubleRight /> Crear cuenta</a>
+                        <Link to="/"> <FaAngleDoubleRight /> Crear cuenta</Link>
                     </li>
                     <li>
-                        <a href="/about">Iniciar sesion</a>
+                        <Link to="/about">Iniciar sesion</Link>
                     </li>
                 </ul>
             </nav>
             {/* Menu sidebar responsive */}
             <div className={`sidebar ${open ? "active" : ""}`}>
                 <ul>
-                    <li><a href="/">Inicio</a></li>
-                    <li><a href="/modelos">Modelos</a></li>
-                    <li><a href="/sucursales">Sucursales</a></li>
-                    <li><a href="/faqs">FAQs</a></li>
-                    <li><a href="/">ES / EN</a></li>
+                    <li><Link to="/">Inicio</Link></li>
+                    <li><Link to="/modelos">Modelos</Link></li>
+                    <li><Link to="/sucursales">Sucursales</Link></li>
+                    <li><Link to="/faqs">FAQs</Link></li>
+                    <li><Link to="/">ES / EN</Link></li>
                 </ul>
             </div>
         </>

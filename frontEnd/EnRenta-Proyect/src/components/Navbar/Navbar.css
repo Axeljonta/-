@@ -220,7 +220,7 @@
 @media screen and (min-width: 1024px)  {
     .sidebar{
         top: 90px;
-        width: 25vw;
+        width: 18vw;
         height: calc(100vh - 105px);
     }
 
@@ -244,7 +244,7 @@
 
 .sidebar ul li{
     margin-bottom: clamp(10px, 2vw, 40px);
-    text-align: center;
+    text-align: right;
     padding: 5% 0px;
     width: 85%;
     border-bottom: #8d7010 clamp(1px, 0.5vw, 3px) solid;
