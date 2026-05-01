@@ -8,6 +8,30 @@ body{
   font-family: "Google Sans Flex", sans-serif;
 }
 
+/* ==========  M A I N  ========= */
+main{
+  min-height: 100vh;
+  background: #fff2d6;
+}
+
+@media screen and (min-width: 370px) and (max-width: 767px) {
+  main{
+    padding-top: 100px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px)  {
+  main{
+    padding-top: 120px;
+  }
+} 
+
+@media screen and (min-width: 1024px)  {
+  main{
+    padding-top: 146px;
+  }
+} 
+
 h1{
   font-size: clamp(40px, 5vw, 64px);
 }

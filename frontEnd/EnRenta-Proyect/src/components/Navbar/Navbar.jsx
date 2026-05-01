@@ -23,7 +23,9 @@ function Navbar() {
                 </div>
                 {/* Logo */}
                 <div className="navbar-logo">
-                    <img src={logo} alt="Logo" />
+                    <Link to="/Home">
+                        <img src={logo} alt="Logo" />
+                    </Link>
                 </div>
                 {/* Boton login y registro */}
                 <ul className="navbar-links">
@@ -38,7 +40,7 @@ function Navbar() {
             {/* Menu sidebar responsive */}
             <div className={`sidebar ${open ? "active" : ""}`}>
                 <ul>
-                    <li><Link to="/">Inicio</Link></li>
+                    <li><Link to="/Home">Inicio</Link></li>
                     <li><Link to="/modelos">Modelos</Link></li>
                     <li><Link to="/sucursales">Sucursales</Link></li>
                     <li><Link to="/faqs">FAQs</Link></li>

@@ -14,9 +14,9 @@ function App() {
   return(
     <BrowserRouter>
       <Navbar />
-      <main style={{marginTop:"156px"}}>
+      <main>
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/Home" element={<Home />} />
             <Route path="/Modelos" element={<Modelos />} />
             <Route path="/Sucursales" element={<Sucursales />} />
             <Route path="/FAQs" element={<FAQs />} />
