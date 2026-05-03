@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Navbar from './components/Navbar/Navbar'
 
 
-import Home from "./pages/Home/Home";
-import Modelos from "./pages/Modelos/Modelos";
-import Sucursales from "./pages/Sucursale/Sucursales";
-import FAQs from "./pages/FAQs/FAQs";
+import Home from "./pages/Home/Home.jsx";
+import Modelos from "./pages/Modelos/Modelos.jsx";
+import Sucursales from "./pages/Sucursales/Sucursales.jsx";
+import FAQs from "./pages/FAQs/FAQs.jsx";
 
 function App() {
   return(
@@ -16,6 +16,7 @@ function App() {
       <Navbar />
       <main>
         <Routes>
+            <Route path="/" element={<Navigate to="/Home" replace />}/>
             <Route path="/Home" element={<Home />} />
             <Route path="/Modelos" element={<Modelos />} />
             <Route path="/Sucursales" element={<Sucursales />} />

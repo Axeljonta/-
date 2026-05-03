@@ -1,4 +1,19 @@
 package com.EnRenta_Back.service;
 
+import com.EnRenta_Back.entity.Car;
+
+import java.util.List;
+import java.util.Optional;
+
 public interface ICarService {
+
+    Car save(Car car);
+
+    Optional<Car> findById(Long id);
+
+    Car update(Car car);
+
+    void delete(Long id);
+
+    List<Car> findAll();
 }

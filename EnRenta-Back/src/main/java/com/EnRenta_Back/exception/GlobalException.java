@@ -1,4 +1,4 @@
-package com.EnRenta_Back.exeption;
+package com.EnRenta_Back.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
