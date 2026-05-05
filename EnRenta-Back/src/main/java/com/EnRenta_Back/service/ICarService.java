@@ -11,6 +11,8 @@ public interface ICarService {
 
     Optional<Car> findById(Long id);
 
+    Optional<Car> findByCarName(String carName);
+
     Car update(Car car);
 
     void delete(Long id);

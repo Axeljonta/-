@@ -9,6 +9,8 @@ import Home from "./pages/Home/Home.jsx";
 import Modelos from "./pages/Modelos/Modelos.jsx";
 import Sucursales from "./pages/Sucursales/Sucursales.jsx";
 import FAQs from "./pages/FAQs/FAQs.jsx";
+import Admin from "./pages/Admin/Admin.jsx";
+import SaveCar from "./pages/Admin/SaveCar.jsx";
 
 function App() {
   return(
@@ -21,6 +23,8 @@ function App() {
             <Route path="/Modelos" element={<Modelos />} />
             <Route path="/Sucursales" element={<Sucursales />} />
             <Route path="/FAQs" element={<FAQs />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/save-car" element={<SaveCar />} />
         </Routes> 
       </main>
     </BrowserRouter>

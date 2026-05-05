@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/carModel")
+@RequestMapping("/cars")
 @CrossOrigin(origins = "*")
 public class CarController {
 
@@ -32,10 +32,24 @@ public class CarController {
         return car.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    //Endpoint GET all
+    @GetMapping
+    public ResponseEntity<List<Car>> findAll() {
+        return ResponseEntity.ok(carService.findAll());
+    }
+
+    //Endpoint GET name
+    @GetMapping(params = "carName")
+    public ResponseEntity<Car> findByCarName(@RequestParam String carName) {
+        Optional<Car> car = carService.findByCarName(carName);
+        return car.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     //Endpoint POST
     @PostMapping
-    public Car save(@RequestBody Car car) {
-        return carService.save(car);
+    public ResponseEntity<Car> save(@RequestBody Car car) {
+        Car saved = carService.save(car);
+        return ResponseEntity.status(201).body(saved);
     }
 
     //Endpoint PUT
