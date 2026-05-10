@@ -47,4 +47,9 @@ public class CarServiceImpl implements ICarService {
     public List<Car> findAll() {
         return List.of();
     }
+
+    @Override
+    public List<Car> findRandomCars() {
+        return carRepository.findRandomCars();
+    }
 }

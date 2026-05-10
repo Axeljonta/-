@@ -1,0 +1,14 @@
+.recommendations {
+  width: 100%;
+  max-width: var(--container-width);
+
+  margin: 0 auto;
+
+  padding: var(--spacing-xl) 20px;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 24px;
+}

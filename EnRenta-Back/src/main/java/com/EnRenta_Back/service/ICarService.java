@@ -18,4 +18,6 @@ public interface ICarService {
     void delete(Long id);
 
     List<Car> findAll();
+
+    List<Car> findRandomCars();
 }

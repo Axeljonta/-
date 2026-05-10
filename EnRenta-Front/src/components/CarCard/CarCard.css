@@ -1,0 +1,20 @@
+.car-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.car-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.car-card-content {
+  padding: var(--spacing-md);
+}
+
+.car-card h3 {
+  margin-bottom: var(--spacing-sm);
+}

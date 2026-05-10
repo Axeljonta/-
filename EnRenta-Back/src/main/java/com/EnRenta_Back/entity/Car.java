@@ -3,21 +3,21 @@ package com.EnRenta_Back.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Car")
+@Table(name = "cars")
 public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "car_id")
+    @Column(name= "carId")
     private Long id;
 
-    @Column(unique = true, name = "car_name")
+    @Column(unique = true, name = "carName")
     private String carName;
 
-    @Column(name= "car_description" )
+    @Column(name= "carDescription" )
     private String carDescription;
 
-    @Column(name= "car_imgUrl" )
+    @Column(name= "carImgUrl" )
     private String carImgUrl;
 
     public Long getId() {

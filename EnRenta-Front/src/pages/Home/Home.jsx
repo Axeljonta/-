@@ -1,3 +1,5 @@
+import { HomeRecommendations } from "../../components/HomeRecommendations/HomeRecommendations.jsx"
+
 function Home() {
   return (
     <div className="home">
@@ -9,6 +11,7 @@ function Home() {
       </section>
       <section className="homeRecomendaciones">
           <h2>Recomendaciones para ti</h2>
+          <HomeRecommendations />
       </section>
     </div>
   );
