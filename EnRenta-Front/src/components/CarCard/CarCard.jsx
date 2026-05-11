@@ -2,19 +2,23 @@ import "./CarCard.css";
 
 export const CarCard = ({ car }) => {
 
-  return (
-    <article className="car-card">
+    const mainImage = car.carImages.find(
+        (img) => img.mainImages
+    );
 
-      <img src={car.carImgUrl} alt={car.carName}/>
+    return (
+        <article className="car-card">
 
-      <div className="car-card-content">
+            <img src={mainImage?.imageUrl} alt={car.carName}/>
 
-        <h3>{car.carName}</h3>
+            <div className="car-card-content">
 
-        <p>{car.carDescription}</p>
+                <h3>{car.carName}</h3>
 
-      </div>
+                <p>{car.carDescription}</p>
 
-    </article>
+            </div>
+
+        </article>
   );
 };

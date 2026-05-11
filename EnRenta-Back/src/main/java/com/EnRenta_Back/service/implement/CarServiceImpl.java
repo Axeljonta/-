@@ -1,5 +1,7 @@
 package com.EnRenta_Back.service.implement;
 
+import com.EnRenta_Back.dto.CarDTO;
+import com.EnRenta_Back.dto.CarImageDTO;
 import com.EnRenta_Back.entity.Car;
 import com.EnRenta_Back.repository.ICarRepository;
 import com.EnRenta_Back.service.ICarService;
@@ -13,7 +15,38 @@ import java.util.Optional;
 public class CarServiceImpl implements ICarService {
 
     @Autowired
-    private ICarRepository carRepository;
+    private final ICarRepository carRepository;
+
+    public CarServiceImpl(ICarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
+
+    @Override
+    public CarDTO findById(Long id) {
+
+        Car car = carRepository.findById(id).orElseThrow();
+
+        return mapToDTO(car);
+    }
+
+    private CarDTO mapToDTO(Car car) {
+
+        List<CarImageDTO> images = car.getCarImages()
+                .stream()
+                .map(image -> new CarImageDTO(
+                        image.getId(),
+                        image.getImageUrl(),
+                        image.getMainImage()
+                ))
+                .toList();
+
+        return new CarDTO(
+                car.getId(),
+                car.getCarName(),
+                car.getCarDescription(),
+                images
+        );
+    }
 
     @Override
     public Car save(Car car) {
@@ -21,11 +54,6 @@ public class CarServiceImpl implements ICarService {
             throw new RuntimeException("Auto ya exista");
         }
         return carRepository.save(car);
-    }
-
-    @Override
-    public Optional<Car> findById(Long id) {
-        return Optional.empty();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.EnRenta_Back.service;
 
+import com.EnRenta_Back.dto.CarDTO;
 import com.EnRenta_Back.entity.Car;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public interface ICarService {
 
     Car save(Car car);
 
-    Optional<Car> findById(Long id);
+    CarDTO findById(Long id);
 
     Optional<Car> findByCarName(String carName);
 

@@ -4,11 +4,46 @@ import { createCar } from "../../services/productService";
 export const SaveCarForm = () => {
   
 // Estado para el formulario
+
 const [form, setForm] = useState({
     carName: "",
     carDescription: "",
-    carImgUrl: "",
+    carImages: [
+        {
+            imageUrl: "",
+            mainImage: true,
+        },
+    ],
   });
+
+// Manejo de cambios en los campos de imagen
+
+const handleImgChange = (index,value) => {
+
+    const newImages = [...form.carImages];
+
+    newImages[index].imageUrl = value;
+    
+    setForm({
+        ...form,
+        carImages: newImages,
+    });
+
+};
+
+const addImageField = () => {
+
+  setForm({
+    ...form,
+    carImages: [
+      ...form.carImages,
+      {
+        imageUrl: "",
+        mainImage: false,
+      },
+    ],
+  });
+};
 
 
 // Estado para errores
@@ -29,7 +64,7 @@ const handleSubmit = async (e) => {
     try {
         await createCar(form);
         alert("Auto creado");
-        setForm({ carName: "", carDescription: "", carImgUrl: "" });
+        setForm({ carName: "", carDescription: "", carImages: [{ imageUrl: "", mainImage: true }] });
     } 
     catch (err) {
       setError(err.message);
@@ -52,12 +87,21 @@ return (
             onChange={handleChange}
         />
 
-        <input
-            name="carImgUrl"
-            placeholder="URL Imagen"
-            value={form.carImgUrl}
-            onChange={handleChange}
-        />
+        {form.carImages.map((image, index) => (
+
+            <input
+                key={index}
+                type="text"
+                placeholder="URL Imagen"
+                value={image.imageUrl}
+                onChange={(e) =>
+                    handleImageChange(index, e.target.value)
+                    }
+            />
+
+        ))}
+
+        <button type="button" onClick={addImageField}> Agregar imagen </button>
 
         <button type="submit">Agregar producto</button>
 
