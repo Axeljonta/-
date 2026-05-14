@@ -258,4 +258,5 @@
     text-decoration: none;
     font-weight: 600;
     transition: .3s;
+    color: var(--color-surface);
 }

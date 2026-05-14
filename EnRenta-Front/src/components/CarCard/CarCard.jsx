@@ -1,19 +1,24 @@
 import "./CarCard.css";
+import {Link} from 'react-router-dom';
 
 export const CarCard = ({ car }) => {
 
-    const mainImage = car.carImages.find(
-        (img) => img.mainImages
+    console.log(car);
+    
+    const mainImage = car.carImages?.find(
+        (img) => img.mainImage
     );
 
     return (
         <article className="car-card">
 
-            <img src={mainImage?.imageUrl} alt={car.carName}/>
+            <img src={car.mainImageUrl} alt={car.carName}/>
 
             <div className="car-card-content">
 
-                <h3>{car.carName}</h3>
+                <Link to={`/cars/${car.id}`}>
+                    <h3>{car.carName}</h3>
+                </Link>
 
                 <p>{car.carDescription}</p>
 

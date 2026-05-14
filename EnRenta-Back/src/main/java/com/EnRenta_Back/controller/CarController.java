@@ -27,43 +27,43 @@ public class CarController {
 
     //Endpoint GET random
     @GetMapping("/random")
-    public ResponseEntity<List<Car>> findRandomCars() {
+    public ResponseEntity<List<CarDTO>> findRandomCars() {
         return ResponseEntity.ok(carService.findRandomCars());
     }
 
     //Endpoint GET all
     @GetMapping
-    public ResponseEntity<List<Car>> findAll() {
+    public ResponseEntity<List<CarDTO>> findAll() {
         return ResponseEntity.ok(carService.findAll());
     }
 
     //Endpoint GET name
     @GetMapping(params = "carName")
-    public ResponseEntity<Car> findByCarName(@RequestParam String carName) {
-        Optional<Car> car = carService.findByCarName(carName);
-        return car.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<CarDTO> findByCarName(@RequestParam String carName) {
+        Optional<CarDTO> carDTO = carService.findByCarName(carName);
+        return carDTO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     //Endpoint GET por id
     @GetMapping("/{id}")
     public ResponseEntity<CarDTO> findById(@PathVariable Long id) {
-        CarDTO car = carService.findById(id);
+        CarDTO carDTO = carService.findById(id);
         //IF lo encuantra devuelve el get ELSE devuelve notFound
-        return ResponseEntity.ok(car);
+        return ResponseEntity.ok(carDTO);
     }
 
     //Endpoint POST
     @PostMapping
-    public ResponseEntity<Car> save(@RequestBody Car car) {
-        Car saved = carService.save(car);
+    public ResponseEntity<CarDTO> save(@RequestBody CarDTO carDTO) {
+        CarDTO saved = carService.save(carDTO);
         return ResponseEntity.status(201).body(saved);
     }
 
     //Endpoint PUT
     @PutMapping("/{id}")
-    public ResponseEntity<Car> update(@RequestBody Car car, @PathVariable Long id) {
-        car.setId(id);
-        Car updatedCar = carService.update(car);
+    public ResponseEntity<CarDTO> update(@RequestBody CarDTO carDTO, @PathVariable Long id) {
+        carDTO.setId(id);
+        CarDTO updatedCar = carService.update(carDTO);
 
         return ResponseEntity.ok(updatedCar);
     }

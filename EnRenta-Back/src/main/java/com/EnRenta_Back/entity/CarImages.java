@@ -22,7 +22,7 @@ public class CarImages {
     @Column(name = "image_main")
     private Boolean mainImage;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
     private Car car;
 

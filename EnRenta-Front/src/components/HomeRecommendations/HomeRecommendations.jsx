@@ -5,7 +5,8 @@ import "./HomeRecommendations.css";
 
 export const HomeRecommendations = () => {
 
-  const { cars, loading } = useRandomCars();
+  const { cars, loading } = useRandomCars(); 
+  
 
   if (loading) {
     return <p>Cargando autos...</p>;

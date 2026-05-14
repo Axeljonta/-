@@ -27,7 +27,7 @@ public class Car {
     @Column(name= "car_description" )
     private String carDescription;
 
-    @OneToMany(mappedBy = "car",  cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "car",  cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<CarImages> carImages;
 
 }

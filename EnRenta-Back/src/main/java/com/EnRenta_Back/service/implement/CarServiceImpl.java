@@ -3,10 +3,13 @@ package com.EnRenta_Back.service.implement;
 import com.EnRenta_Back.dto.CarDTO;
 import com.EnRenta_Back.dto.CarImageDTO;
 import com.EnRenta_Back.entity.Car;
+import com.EnRenta_Back.entity.CarImages;
+import com.EnRenta_Back.mapper.CarMapper;
 import com.EnRenta_Back.repository.ICarRepository;
 import com.EnRenta_Back.service.ICarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,53 +19,65 @@ public class CarServiceImpl implements ICarService {
 
     @Autowired
     private final ICarRepository carRepository;
+    private final CarMapper carMapper;
 
-    public CarServiceImpl(ICarRepository carRepository) {
+    public CarServiceImpl(ICarRepository carRepository, CarMapper carMapper) {
         this.carRepository = carRepository;
+        this.carMapper = carMapper;
     }
+
+
+
 
     @Override
     public CarDTO findById(Long id) {
+        Car car = carRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Car not found"));
 
-        Car car = carRepository.findById(id).orElseThrow();
-
-        return mapToDTO(car);
+        return carMapper.toDTO(car);
     }
 
-    private CarDTO mapToDTO(Car car) {
+    @Override
+    public Optional<CarDTO> findByCarName(String carName) {
+        return carRepository.findByCarName(carName)
+                .map(car -> carMapper.toDTO(car));
+    }
 
-        List<CarImageDTO> images = car.getCarImages()
-                .stream()
-                .map(image -> new CarImageDTO(
-                        image.getId(),
-                        image.getImageUrl(),
-                        image.getMainImage()
-                ))
+    @Override
+    public List<CarDTO> findRandomCars() {
+        List<Car> cars = carRepository.findRandomCars();
+        return cars.stream()
+                .map(carMapper::toDTO)
                 .toList();
-
-        return new CarDTO(
-                car.getId(),
-                car.getCarName(),
-                car.getCarDescription(),
-                images
-        );
     }
 
     @Override
-    public Car save(Car car) {
-        if (carRepository.findByCarName(car.getCarName()).isPresent()) {
-            throw new RuntimeException("Auto ya exista");
+    public List<CarDTO> findAll() {
+        return List.of();
+    }
+
+
+    @Override
+    public CarDTO save(@RequestBody CarDTO carDTO) {
+
+        // 1. Convertimos DTO → Entity
+        Car car = carMapper.toEntity(carDTO);
+
+        // 2.Establecer la relación bidireccional con las imágenes
+        if (car.getCarImages() != null && !car.getCarImages().isEmpty()) {
+            car.getCarImages().forEach(image -> image.setCar(car));
         }
-        return carRepository.save(car);
+
+        // 3. Guardamos en la base de datos
+        Car savedCar = carRepository.save(car);
+
+        // 4. Devolvemos el DTO con los datos guardados (incluyendo ID generado)
+        return carMapper.toDTO(savedCar);
     }
 
-    @Override
-    public Optional<Car> findByCarName(String carName) {
-        return Optional.empty();
-    }
 
     @Override
-    public Car update(Car car) {
+    public CarDTO update(CarDTO carDTO) {
         return null;
     }
 
@@ -71,13 +86,7 @@ public class CarServiceImpl implements ICarService {
 
     }
 
-    @Override
-    public List<Car> findAll() {
-        return List.of();
-    }
 
-    @Override
-    public List<Car> findRandomCars() {
-        return carRepository.findRandomCars();
-    }
+
+
 }

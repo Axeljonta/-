@@ -1,0 +1,43 @@
+.product-header {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 24px 40px;
+
+  background-color: var(--color-primary);
+
+  color: white;
+}
+
+.product-body {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 40px 20px;
+}
+
+.product-gallery {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+
+  margin-bottom: 32px;
+}
+
+.product-gallery img {
+  width: 100%;
+
+  height: 300px;
+
+  object-fit: cover;
+
+  border-radius: var(--radius-md);
+}

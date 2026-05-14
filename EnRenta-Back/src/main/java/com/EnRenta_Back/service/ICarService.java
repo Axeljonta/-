@@ -8,17 +8,19 @@ import java.util.Optional;
 
 public interface ICarService {
 
-    Car save(Car car);
-
     CarDTO findById(Long id);
 
-    Optional<Car> findByCarName(String carName);
+    Optional<CarDTO> findByCarName(String carName);
 
-    Car update(Car car);
+    List<CarDTO> findAll();
+
+    List<CarDTO> findRandomCars();
+
+    CarDTO save(CarDTO carDTO);
+
+    CarDTO update(CarDTO carDTO);
 
     void delete(Long id);
 
-    List<Car> findAll();
 
-    List<Car> findRandomCars();
 }

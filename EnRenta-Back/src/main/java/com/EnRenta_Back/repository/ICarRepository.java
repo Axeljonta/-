@@ -1,5 +1,6 @@
 package com.EnRenta_Back.repository;
 
+import com.EnRenta_Back.dto.CarDTO;
 import com.EnRenta_Back.entity.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
